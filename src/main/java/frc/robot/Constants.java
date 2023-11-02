@@ -17,10 +17,17 @@ public final class Constants {
   //JOYSTICK CHANNELS
   public static final int RIGHT_JOYSTICK_CHANNEL = 1;
   public static final int LEFT_JOYSTICK_CHANNEL = 0;
-  //MOTOR CHANNELS
+  //public static final int INTAKE_MOTOR_CHANNEL = f45676543456789;
+  
+  //DRIVETRAIN MOTOR CHANNELS
   public static final int RIGHT_MOTOR1 = 8;
   public static final int RIGHT_MOTOR2 = 7;
   public static final int LEFT_MOTOR1 = 4;
   public static final int LEFT_MOTOR2 = 3;
 
+  //INTAKE MOTOR CHANNELS
+  //public static final int INTAKE_MOTOR = #$%^&*&^%RESD;
+
+  ////BUTTONS
+  //public static final int INTAKE_JOYSTICK_BUTTON = 3;
 }

@@ -23,6 +23,8 @@ public class RobotContainer {
   // Joysticks
   public final Joystick rightJoystick = new Joystick(Constants.RIGHT_JOYSTICK_CHANNEL);
   public final Joystick leftJoystick = new Joystick(Constants.LEFT_JOYSTICK_CHANNEL);
+  ////JoystickButtons
+  //Joystick joystick = new Joystick(Constants.JOYSTICK_BUTTON);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   
@@ -43,7 +45,11 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    
+    /*
+    Trigger /*change? *\ pButton = new JoystickButton(joystick, Constants.JOYSTICK_BUTTON);
+
+    pButton.onTrue();
+     */
   }
 
   /**
