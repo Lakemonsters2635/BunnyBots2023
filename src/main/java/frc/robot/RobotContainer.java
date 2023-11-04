@@ -4,10 +4,13 @@
 
 package frc.robot;
 
+import frc.robot.commands.IntakeCommand;
 import frc.robot.subsystems.DrivetrainSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
@@ -18,6 +21,8 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
+  public final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
+  public final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSubsystem);
   public final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
 
   // Joysticks
@@ -45,11 +50,10 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    /*
-    Trigger /*change? *\ pButton = new JoystickButton(joystick, Constants.JOYSTICK_BUTTON);
+    
+    Trigger pButton = new JoystickButton(leftJoystick, Constants.INTAKE_BUTTON);
 
-    pButton.onTrue();
-     */
+    pButton.whileTrue(m_intakeCommand);
   }
 
   /**

@@ -4,26 +4,32 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class IntakeSubsystem extends SubsystemBase {
-  /** Creates a new IntakeSubsystem. 
-  public CANSparkMax m_intakeMotor
-  */
+  //Creates a new IntakeSubsystem. 
+  public CANSparkMax m_intakeMotor;
+  
   public IntakeSubsystem() {
-    /*
+    
     m_intakeMotor = new CANSparkMax(Constants.INTAKE_MOTOR_CHANNEL, MotorType.kBrushless);
 
     //Might need to invert motor
     
-    */
   }
 
-  /*public void intake (double rightJoystick) {
-    m_intakeMotor.set(rightJoystick);
-    //System.out.println("Intake method working")
+  public void runIntake () {
+    m_intakeMotor.set(1);
   }
-  */
+
+  public void stopIntake() {
+    m_intakeMotor.set(0);
+  }
+  
 
   @Override
   public void periodic() {
