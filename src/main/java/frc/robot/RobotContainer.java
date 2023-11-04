@@ -4,10 +4,10 @@
 
 package frc.robot;
 
-import frc.robot.subsystems.DrivetrainSubsystem;
+import frc.robot.commands.ShooterCommand;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
@@ -18,14 +18,14 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  public final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
+  
+  //Commands
+  private final ShooterCommand m_shooterCommand = new ShooterCommand();
 
-  // Joysticks
-  public final Joystick rightJoystick = new Joystick(Constants.RIGHT_JOYSTICK_CHANNEL);
-  public final Joystick leftJoystick = new Joystick(Constants.LEFT_JOYSTICK_CHANNEL);
+  //Joystick
+  public final Joystick rightJoystick = new Joystick(Constants.RIGHT_JOYSTICK);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
@@ -43,16 +43,18 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    
+    // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
+    // cancelling on release.
+    Trigger shooterButton = new JoystickButton(rightJoystick, Constants.SHOOTER_BUTTON);
+
+    shooterButton.onTrue(m_shooterCommand);
   }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
-   * @return the command to run in autonomous
+   * @return 
    */
-  public Command getAutonomousCommand() {
+  public void getAutonomousCommand() {
     // An example command will be run in autonomous
-    return null;
   }
 }
