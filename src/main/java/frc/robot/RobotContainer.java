@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.commands.ShooterCommand;
+import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -18,12 +19,14 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  
+  //Subsystems
+  private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
+
   //Commands
-  private final ShooterCommand m_shooterCommand = new ShooterCommand();
+  private final ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
 
   //Joystick
-  public final Joystick rightJoystick = new Joystick(Constants.RIGHT_JOYSTICK);
+  public final Joystick rightJoystick = new Joystick(Constants.RIGHT_JOYSTICK_CHANNEL);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   /** The container for the robot. Contains subsystems, OI devices, and commands. */

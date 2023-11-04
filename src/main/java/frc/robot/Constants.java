@@ -13,13 +13,23 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  // Shooter motor chanels
+  //MOTOR CHANNELS
+  public static final int RIGHT_MOTOR1 = 8;
+  public static final int RIGHT_MOTOR2 = 7;
+
+  public static final int LEFT_MOTOR1 = 4;
+  public static final int LEFT_MOTOR2 = 3;
+
+  //Shooter motors
+
   //Change this =>
-  public final static int SHOOTER_RIGHT_MOTOR = 0;
-  public final static int SHOOTER_LEFT_MOTOR = 0;
+  public final static int SHOOTER_RIGHT_MOTOR = 5;
+  public final static int SHOOTER_LEFT_MOTOR = 6;
+  
   // Shooter button(Might be 0)
   public final static int SHOOTER_BUTTON = 1; //Right joystick button
 
-  // No need in coping
-  public final static int RIGHT_JOYSTICK = 1;
+  //Joysticks
+  public static final int RIGHT_JOYSTICK_CHANNEL = 1;
+  public static final int LEFT_JOYSTICK_CHANNEL = 0;
 }
