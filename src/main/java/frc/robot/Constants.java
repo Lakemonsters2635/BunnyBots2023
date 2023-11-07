@@ -20,14 +20,34 @@ public final class Constants {
   public static final int LEFT_MOTOR1 = 4;
   public static final int LEFT_MOTOR2 = 3;
 
-  //Shooter motors
 
-  //Change this =>
+  //ELEVATOR MOTOR CHANNELS
+  // TODO: change these constants
+  public static final int ELEVATOR1 = 5;
+  public static final int ELEVATOR2 = 6;
+
+  public static final int ELEVATOR_BUTTON = 4;
+
+  public static final int ELEVATOR_STOP_TIME = 5;
+
+  public static final int ELEVATOR_STOP_SPEED = 0;
+  public static final int ELEVATOR_START_SPEED = 1;
+
+
+  //Shooter motors
   public final static int SHOOTER_RIGHT_MOTOR = 5;
-  public final static int SHOOTER_LEFT_MOTOR = 6;
-  
-  // Shooter button(Might be 0)
-  public final static int SHOOTER_BUTTON = 2; //Right joystick button
+  public final static int SHOOTER_LEFT_MOTOR = 9;
+
+  //Intake motor channel
+  //TODO check that intake motor channel is correct
+  public final static int INTAKE_MOTOR_CHANNEL = 6;
+
+  // Shooter button
+  public final static int SHOOTER_BUTTON = 1; //Right joystick button
+
+  // Intake button
+  //TODO check that intake button is correct
+  public final static int INTAKE_BUTTON = 1;
 
   //Joysticks
   public static final int RIGHT_JOYSTICK_CHANNEL = 1;

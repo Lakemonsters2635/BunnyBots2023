@@ -6,6 +6,12 @@ package frc.robot;
 
 import frc.robot.commands.ShooterCommand;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.commands.ElevatorCommand;
+import frc.robot.subsystems.DrivetrainSubsystem;
+import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.subsystems.DrivetrainSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -21,12 +27,23 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   //Subsystems
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
+  public final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
+  public final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSubsystem);
+  public final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
+  public final ElevatorSubsystem m_elevatorSubsystem = new ElevatorSubsystem();
+
+  public final ElevatorCommand m_elevatorCommand = new ElevatorCommand(m_elevatorSubsystem);
 
   //Commands
   private final ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
 
   //Joystick
   public final Joystick rightJoystick = new Joystick(Constants.RIGHT_JOYSTICK_CHANNEL);
+  public final Joystick leftJoystick = new Joystick(Constants.LEFT_JOYSTICK_CHANNEL);
+  ////JoystickButtons
+  //Joystick joystick = new Joystick(Constants.JOYSTICK_BUTTON);
+
+  
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -51,6 +68,12 @@ public class RobotContainer {
     Trigger shooterButton = new JoystickButton(rightJoystick, Constants.SHOOTER_BUTTON);
 
     shooterButton.onTrue(m_shooterCommand);
+    Trigger elevatorButton = new JoystickButton(leftJoystick, Constants.ELEVATOR_BUTTON);
+    elevatorButton.onTrue(m_elevatorCommand);
+    
+    Trigger pButton = new JoystickButton(leftJoystick, Constants.INTAKE_BUTTON);
+
+    pButton.whileTrue(m_intakeCommand);
   }
 
   /**
