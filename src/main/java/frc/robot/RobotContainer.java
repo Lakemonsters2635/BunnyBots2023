@@ -7,6 +7,9 @@ package frc.robot;
 import frc.robot.commands.ElevatorCommand;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.subsystems.DrivetrainSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -21,6 +24,8 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
+  public final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
+  public final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSubsystem);
   public final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
   public final ElevatorSubsystem m_elevatorSubsystem = new ElevatorSubsystem();
 
@@ -29,6 +34,8 @@ public class RobotContainer {
   // Joysticks
   public final Joystick rightJoystick = new Joystick(Constants.RIGHT_JOYSTICK_CHANNEL);
   public final Joystick leftJoystick = new Joystick(Constants.LEFT_JOYSTICK_CHANNEL);
+  ////JoystickButtons
+  //Joystick joystick = new Joystick(Constants.JOYSTICK_BUTTON);
 
   
 
@@ -53,6 +60,10 @@ public class RobotContainer {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     Trigger elevatorButton = new JoystickButton(leftJoystick, Constants.ELEVATOR_BUTTON);
     elevatorButton.onTrue(m_elevatorCommand);
+    
+    Trigger pButton = new JoystickButton(leftJoystick, Constants.INTAKE_BUTTON);
+
+    pButton.whileTrue(m_intakeCommand);
   }
 
   /**
