@@ -33,7 +33,7 @@ public final class Constants {
 
   // Intake button
   //TODO check that intake button is correct
-  public final static int INTAKE_BUTTON = 3;
+  public final static int INTAKE_BUTTON = 1;
 
   //Joysticks
   public static final int RIGHT_JOYSTICK_CHANNEL = 1;
