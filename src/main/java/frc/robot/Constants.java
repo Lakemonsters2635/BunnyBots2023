@@ -52,4 +52,5 @@ public final class Constants {
   //Joysticks
   public static final int RIGHT_JOYSTICK_CHANNEL = 1;
   public static final int LEFT_JOYSTICK_CHANNEL = 0;
+  //TODO: Change shooter motor types, if necessary
 }
