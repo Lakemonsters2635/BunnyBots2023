@@ -27,9 +27,10 @@ public final class Constants {
   public final static int SHOOTER_LEFT_MOTOR = 6;
   
   // Shooter button(Might be 0)
-  public final static int SHOOTER_BUTTON = 1; //Right joystick button
+  public final static int SHOOTER_BUTTON = 2; //Right joystick button
 
   //Joysticks
   public static final int RIGHT_JOYSTICK_CHANNEL = 1;
   public static final int LEFT_JOYSTICK_CHANNEL = 0;
+  //TODO: Change shooter motor types, if necessary
 }
