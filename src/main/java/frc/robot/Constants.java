@@ -20,6 +20,20 @@ public final class Constants {
   public static final int LEFT_MOTOR1 = 4;
   public static final int LEFT_MOTOR2 = 3;
 
+
+  //ELEVATOR MOTOR CHANNELS
+  // TODO: change these constants
+  public static final int ELEVATOR1 = 5;
+  public static final int ELEVATOR2 = 6;
+
+  public static final int ELEVATOR_BUTTON = 4;
+
+  public static final int ELEVATOR_STOP_TIME = 5;
+
+  public static final int ELEVATOR_STOP_SPEED = 0;
+  public static final int ELEVATOR_START_SPEED = 1;
+
+
   //Shooter motors
   public final static int SHOOTER_RIGHT_MOTOR = 5;
   public final static int SHOOTER_LEFT_MOTOR = 9;
