@@ -16,11 +16,12 @@ public class DrivetrainSubsystem extends SubsystemBase {
   public CANSparkMax m_leftMotor2;
   public CANSparkMax m_rightMotor1;
   public CANSparkMax m_rightMotor2;
+
   public DrivetrainSubsystem() {
-    m_leftMotor1 = new CANSparkMax(Constants.LEFT_MOTOR1, MotorType.kBrushless);
-    m_leftMotor2 = new CANSparkMax(Constants.LEFT_MOTOR2, MotorType.kBrushless);
-    m_rightMotor1 = new CANSparkMax(Constants.RIGHT_MOTOR1, MotorType.kBrushless);
-    m_rightMotor2 = new CANSparkMax(Constants.RIGHT_MOTOR2, MotorType.kBrushless);
+    m_leftMotor1 = new CANSparkMax(Constants.LEFT_DRIVE_MOTOR1, MotorType.kBrushless);
+    m_leftMotor2 = new CANSparkMax(Constants.LEFT_DRIVE_MOTOR2, MotorType.kBrushless);
+    m_rightMotor1 = new CANSparkMax(Constants.RIGHT_DRIVE_MOTOR1, MotorType.kBrushless);
+    m_rightMotor2 = new CANSparkMax(Constants.RIGHT_DRIVE_MOTOR2, MotorType.kBrushless);
 
     m_leftMotor1.setInverted(true);
     m_leftMotor2.setInverted(true);
@@ -28,14 +29,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
   }
 
   public void drive (double rightJoystick, double leftJoystick) {
-
     m_leftMotor1.set(leftJoystick);
     m_leftMotor2.set(leftJoystick);
     m_rightMotor1.set(rightJoystick);
     m_rightMotor2.set(rightJoystick);
-    System.out.println("drive method");
   }
-  
   
 
   @Override

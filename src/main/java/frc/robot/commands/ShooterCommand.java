@@ -6,18 +6,18 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class ShooterCommand extends CommandBase {
   /** Creates a new ShooterCommand. */
-  ShooterSubsystem m_shooterSubsystem;
-  Timer timer = new Timer();
-  double timeElapsed = 5;
+  private ShooterSubsystem m_shooterSubsystem;
+  private Timer timer;
 
   public ShooterCommand(ShooterSubsystem shooterSubsystem) {
     m_shooterSubsystem = shooterSubsystem;
-    // Use addRequirements() here to declare subsystem dependencies.
-    // While ShooterCommand is working others can't run shooterSubsystem
+    timer = new Timer();
+    
     addRequirements(m_shooterSubsystem);
   }
 
@@ -28,9 +28,9 @@ public class ShooterCommand extends CommandBase {
     //timer reseted and started 
     timer.reset();
     timer.start();
-    // Work shooter
-    m_shooterSubsystem.shoot(1, 1);
 
+    // Work shooter
+    m_shooterSubsystem.runShooter();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -39,14 +39,14 @@ public class ShooterCommand extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_shooterSubsystem.stopShooter();
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(timer.get()>=timeElapsed){
-      m_shooterSubsystem.shoot(0, 0);
-      System.out.println("ShooterCommand.isFinished() : true");
+    if(timer.get() >= Constants.SHOOTER_STOP_TIME){
       return true;
     }
     else {

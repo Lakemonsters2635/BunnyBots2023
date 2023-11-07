@@ -13,44 +13,55 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  //MOTOR CHANNELS
-  public static final int RIGHT_MOTOR1 = 8;
-  public static final int RIGHT_MOTOR2 = 7;
-
-  public static final int LEFT_MOTOR1 = 4;
-  public static final int LEFT_MOTOR2 = 3;
+  // JOYSTICKS
+  public static final int RIGHT_JOYSTICK_CHANNEL = 1;
+  public static final int LEFT_JOYSTICK_CHANNEL = 0;
 
 
-  //ELEVATOR MOTOR CHANNELS
-  // TODO: change these constants
+  // DRIVE CONSTANTS
+  // TODO: Change these
+  public static final int RIGHT_DRIVE_MOTOR1 = 8;
+  public static final int RIGHT_DRIVE_MOTOR2 = 7;
+
+  public static final int LEFT_DRIVE_MOTOR1 = 4;
+  public static final int LEFT_DRIVE_MOTOR2 = 3;
+
+
+  //ELEVATOR CONSTANTS
+  // TODO: Change these
   public static final int ELEVATOR1 = 5;
   public static final int ELEVATOR2 = 6;
 
-  public static final int ELEVATOR_BUTTON = 4;
-
-  public static final int ELEVATOR_STOP_TIME = 5;
-
   public static final int ELEVATOR_STOP_SPEED = 0;
   public static final int ELEVATOR_START_SPEED = 1;
+  
+  public static final int ELEVATOR_STOP_TIME = 5;
 
 
-  //Shooter motors
+  // SHOOTER CONSTANTS
+  // TODO: Change these
   public final static int SHOOTER_RIGHT_MOTOR = 5;
   public final static int SHOOTER_LEFT_MOTOR = 9;
 
-  //Intake motor channel
-  //TODO check that intake motor channel is correct
-  public final static int INTAKE_MOTOR_CHANNEL = 6;
+  public static final int SHOOTER_STOP_SPEED = 0;
+  public static final int SHOOTER_START_SPEED = 1;
 
-  // Shooter button
-  public final static int SHOOTER_BUTTON = 1; //Right joystick button
+  public static final int SHOOTER_STOP_TIME = 5;
 
-  // Intake button
-  //TODO check that intake button is correct
+
+  // INTAKE CONSTANTS
+  // TODO: Change these
+  public final static int INTAKE_MOTOR = 6;
+
+  public static final int INTAKE_STOP_SPEED = 0;
+  public static final int INTAKE_START_SPEED = 1;
+
+  // LEFT BUTTON CONSTANTS
+  public static final int ELEVATOR_BUTTON = 4;
   public final static int INTAKE_BUTTON = 1;
 
-  //Joysticks
-  public static final int RIGHT_JOYSTICK_CHANNEL = 1;
-  public static final int LEFT_JOYSTICK_CHANNEL = 0;
-  //TODO: Change shooter motor types, if necessary
+  // RIGHT BUTTON CONSTANTS
+  public final static int SHOOTER_BUTTON = 1;
+
+
 }

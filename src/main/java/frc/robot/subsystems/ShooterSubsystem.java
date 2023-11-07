@@ -23,10 +23,15 @@ public class ShooterSubsystem extends SubsystemBase {
 
   }
   
-  public void shoot(double leftShooterMotorValue, double rightShooterMotorValue){
-    m_leftShooterMotor.set(leftShooterMotorValue);
-    m_rightShooterMotor.set(rightShooterMotorValue);
+  public void runShooter(){
+    m_leftShooterMotor.set(Constants.SHOOTER_START_SPEED);
+    m_rightShooterMotor.set(Constants.SHOOTER_START_SPEED);
   }
+
+  public void stopShooter(){
+    m_leftShooterMotor.set(Constants.SHOOTER_STOP_SPEED);
+    m_rightShooterMotor.set(Constants.SHOOTER_STOP_SPEED);
+  }  
 
   @Override
   public void periodic() {

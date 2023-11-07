@@ -11,10 +11,12 @@ import frc.robot.subsystems.ElevatorSubsystem;
 
 public class ElevatorCommand extends CommandBase {
   private ElevatorSubsystem m_elevatorSubsystem;
-  private Timer timer = new Timer();
+  private Timer timer;
+
   public ElevatorCommand(ElevatorSubsystem elevatorSubsystem) {
-    // Use addRequirements() here to declare subsystem dependencies.
     m_elevatorSubsystem = elevatorSubsystem;
+    timer = new Timer();
+
     addRequirements(m_elevatorSubsystem);
   }
 
@@ -23,7 +25,7 @@ public class ElevatorCommand extends CommandBase {
   public void initialize() {
     timer.reset();
     timer.start();
-    m_elevatorSubsystem.startElevator();
+    m_elevatorSubsystem.runElevator();
   }
 
   // Called every time the scheduler runs while the command is scheduled.

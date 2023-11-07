@@ -19,7 +19,7 @@ public class ElevatorSubsystem extends SubsystemBase {
     elevator2 = new CANSparkMax(Constants.ELEVATOR2, MotorType.kBrushless);
   }
   
-  public void startElevator(){
+  public void runElevator(){
     elevator1.set(Constants.ELEVATOR_START_SPEED);
     elevator2.set(Constants.ELEVATOR_START_SPEED);
   }
