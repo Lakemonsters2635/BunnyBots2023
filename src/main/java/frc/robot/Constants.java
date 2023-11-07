@@ -25,12 +25,14 @@ public final class Constants {
   public final static int SHOOTER_LEFT_MOTOR = 9;
 
   //Intake motor channel
+  //TODO check that intake motor channel is correct
   public final static int INTAKE_MOTOR_CHANNEL = 6;
 
   // Shooter button
   public final static int SHOOTER_BUTTON = 1; //Right joystick button
 
   // Intake button
+  //TODO check that intake button is correct
   public final static int INTAKE_BUTTON = 3;
 
   //Joysticks
