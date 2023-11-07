@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -14,13 +13,29 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  //JOYSTICK CHANNELS
-  public static final int RIGHT_JOYSTICK_CHANNEL = 1;
-  public static final int LEFT_JOYSTICK_CHANNEL = 0;
   //MOTOR CHANNELS
   public static final int RIGHT_MOTOR1 = 8;
   public static final int RIGHT_MOTOR2 = 7;
+
   public static final int LEFT_MOTOR1 = 4;
   public static final int LEFT_MOTOR2 = 3;
 
+  //Shooter motors
+  public final static int SHOOTER_RIGHT_MOTOR = 5;
+  public final static int SHOOTER_LEFT_MOTOR = 9;
+
+  //Intake motor channel
+  //TODO check that intake motor channel is correct
+  public final static int INTAKE_MOTOR_CHANNEL = 6;
+
+  // Shooter button
+  public final static int SHOOTER_BUTTON = 1; //Right joystick button
+
+  // Intake button
+  //TODO check that intake button is correct
+  public final static int INTAKE_BUTTON = 1;
+
+  //Joysticks
+  public static final int RIGHT_JOYSTICK_CHANNEL = 1;
+  public static final int LEFT_JOYSTICK_CHANNEL = 0;
 }
