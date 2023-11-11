@@ -40,8 +40,8 @@ public final class Constants {
 
   // SHOOTER CONSTANTS
   // TODO: Change these
-  public final static int SHOOTER_RIGHT_MOTOR = 5;
-  public final static int SHOOTER_LEFT_MOTOR = 9;
+  public final static int SHOOTER_RIGHT_MOTOR = 10;
+  public final static int SHOOTER_LEFT_MOTOR = 11;
 
   public static final int SHOOTER_STOP_SPEED = 0;
   public static final int SHOOTER_START_SPEED = 1;
@@ -51,7 +51,7 @@ public final class Constants {
 
   // INTAKE CONSTANTS
   // TODO: Change these
-  public final static int INTAKE_MOTOR = 6;
+  public final static int INTAKE_MOTOR = 9;
 
   public static final int INTAKE_STOP_SPEED = 0;
   public static final int INTAKE_START_SPEED = 1;
