@@ -5,8 +5,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandGroupBase;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.ElevatorCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
@@ -32,10 +36,15 @@ public class RobotContainer {
   public final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   public final ElevatorSubsystem m_elevatorSubsystem = new ElevatorSubsystem();
 
+  private SendableChooser<CommandGroupBase> m_autoChooser;
+
+
   // COMMANDS
   private final ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
   public final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSubsystem);
   public final ElevatorCommand m_elevatorCommand = new ElevatorCommand(m_elevatorSubsystem);
+  
+  public final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_drivetrainSubsystem);
 
 
   public RobotContainer() {
@@ -57,8 +66,14 @@ public class RobotContainer {
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    * @return 
+   * @return 
    */
-  public void getAutonomousCommand() {
+  public AutonomousCommand getAutonomousCommand() {
     // An example command will be run in autonomous
+    m_autoChooser = new SendableChooser<>();
+    m_autoChooser.addOption("Drive Straight", m_autonomousCommand);
+    SmartDashboard.putData("AutoMode", m_autoChooser);
+
+    return m_autonomousCommand;
   }
 }
