@@ -29,10 +29,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
   }
 
   public void drive (double rightJoystick, double leftJoystick) {
-    m_leftMotor1.set(leftJoystick);
-    m_leftMotor2.set(leftJoystick);
-    m_rightMotor1.set(rightJoystick);
-    m_rightMotor2.set(rightJoystick);
+    m_leftMotor1.set(leftJoystick * Constants.DEBUG_MAX_SPEED);
+    m_leftMotor2.set(leftJoystick * Constants.DEBUG_MAX_SPEED);
+    m_rightMotor1.set(rightJoystick * Constants.DEBUG_MAX_SPEED);
+    m_rightMotor2.set(rightJoystick * Constants.DEBUG_MAX_SPEED);
   }
   
 

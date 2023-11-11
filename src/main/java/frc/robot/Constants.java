@@ -63,5 +63,10 @@ public final class Constants {
   // RIGHT BUTTON CONSTANTS
   public final static int SHOOTER_BUTTON = 1;
 
+  // DEBUG MAX SPEED
+  // TODO: Change this to 1.0 for competetion
+  // public final static double DEBUG_MAX_SPEED = 0.1; 
+  public final static double DEBUG_MAX_SPEED = 1.0; 
+
 
 }
