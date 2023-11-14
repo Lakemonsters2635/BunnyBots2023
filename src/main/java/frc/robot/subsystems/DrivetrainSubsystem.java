@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -16,12 +17,15 @@ public class DrivetrainSubsystem extends SubsystemBase {
   public CANSparkMax m_leftMotor2;
   public CANSparkMax m_rightMotor1;
   public CANSparkMax m_rightMotor2;
+  public AHRS m_navX;
 
-  public DrivetrainSubsystem() {
+  public DrivetrainSubsystem(AHRS navX) {
     m_leftMotor1 = new CANSparkMax(Constants.LEFT_DRIVE_MOTOR1, MotorType.kBrushless);
     m_leftMotor2 = new CANSparkMax(Constants.LEFT_DRIVE_MOTOR2, MotorType.kBrushless);
     m_rightMotor1 = new CANSparkMax(Constants.RIGHT_DRIVE_MOTOR1, MotorType.kBrushless);
     m_rightMotor2 = new CANSparkMax(Constants.RIGHT_DRIVE_MOTOR2, MotorType.kBrushless);
+    
+    m_navX = navX;
 
     m_leftMotor1.setInverted(true);
     m_leftMotor2.setInverted(true);
@@ -34,7 +38,20 @@ public class DrivetrainSubsystem extends SubsystemBase {
     m_rightMotor1.set(rightJoystick * Constants.DEBUG_MAX_SPEED);
     m_rightMotor2.set(rightJoystick * Constants.DEBUG_MAX_SPEED);
   }
-  
+
+  public void resetDisplacement (){
+    m_navX.resetDisplacement();
+  }
+
+  public float getXDisplacement (){
+    return m_navX.getDisplacementX();
+  }
+  public float getYDisplacement (){
+    return m_navX.getDisplacementY();
+  }
+  public float getZDisplacement (){
+    return m_navX.getDisplacementZ();
+  }  
 
   @Override
   public void periodic() {

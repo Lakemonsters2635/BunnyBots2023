@@ -4,7 +4,10 @@
 
 package frc.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandGroupBase;
@@ -26,12 +29,14 @@ import frc.robot.subsystems.ShooterSubsystem;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
+
+  public final AHRS navX = new AHRS(SPI.Port.kMXP);
   // JOYSTICKS
   public final Joystick rightJoystick = new Joystick(Constants.RIGHT_JOYSTICK_CHANNEL);
   public final Joystick leftJoystick = new Joystick(Constants.LEFT_JOYSTICK_CHANNEL);
 
   // SUBSYSTEMS
-  public final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
+  public final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem(navX);
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   public final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   public final ElevatorSubsystem m_elevatorSubsystem = new ElevatorSubsystem();
