@@ -8,8 +8,11 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
 
+
 public class AutonomousLeaveHomeCommand extends CommandBase {
   /** Creates a new AutonomousLeaveHomeCommand. */
+  private double initPosition;
+  private double displacement;
   DrivetrainSubsystem m_drivetrainSubsystem;
   public AutonomousLeaveHomeCommand(DrivetrainSubsystem drivetrainSubsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -20,27 +23,31 @@ public class AutonomousLeaveHomeCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_drivetrainSubsystem.resetDisplacement();
+    initPosition = m_drivetrainSubsystem.getEncoderPosition();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     m_drivetrainSubsystem.drive(-0.2, -0.2);
-    System.out.println("zDisplacement = " + m_drivetrainSubsystem.getZDisplacement());
+    double currentPose = m_drivetrainSubsystem.getEncoderPosition();
+    displacement = currentPose - initPosition;
+    displacement = Math.abs(displacement)*((6*Math.PI)/10.71);
+    System.out.println(displacement);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_drivetrainSubsystem.drive(1, 1);
     m_drivetrainSubsystem.drive(0, 0);
-    System.out.println("ended!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    System.out.println("ended!!!!!");
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(m_drivetrainSubsystem.getXDisplacement() >= 2) {
+    if(displacement >= 36) {
     System.out.println("returning finished");
     return true;
     } else {

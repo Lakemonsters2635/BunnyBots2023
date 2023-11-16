@@ -39,6 +39,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
     m_rightMotor2.set(rightJoystick * Constants.DEBUG_MAX_SPEED);
   }
 
+  public double getEncoderPosition () {
+    return m_leftMotor1.getEncoder().getPosition();
+  }
+
   public void resetDisplacement (){
     m_navX.resetDisplacement();
   }
