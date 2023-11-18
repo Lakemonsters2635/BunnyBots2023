@@ -5,7 +5,9 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.subsystems.DrivetrainSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -13,12 +15,21 @@ import frc.robot.subsystems.DrivetrainSubsystem;
 public class AutonomousCommand extends SequentialCommandGroup {
   /** Creates a new AutonomousCommand. */
   
-  public AutonomousCommand(DrivetrainSubsystem dts) {
+  public AutonomousCommand(DrivetrainSubsystem dts, ShooterSubsystem shooterSubsystem) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new AutonomousLeaveHomeCommand(dts)
+      // TODO: Recoment them
+      new AutonomousLeaveHomeCommand(dts),
+      new WaitCommand(3),
+      //new ShooterCommand(shooterSubsystem)
+      new AutonomusLeftFieldPosition(dts),
+      new WaitCommand(3),
+      //new ShooterCommand(shooterSubsystem),
+      new AutonomusLeftFieldPosition(dts),
+      new WaitCommand(3)
+      //new ShooterCommand(shooterSubsystem)
+
     );
   }
 }
- 

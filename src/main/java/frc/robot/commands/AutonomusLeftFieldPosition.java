@@ -7,16 +7,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
-
-
-public class AutonomousLeaveHomeCommand extends CommandBase {
-  /** Creates a new AutonomousLeaveHomeCommand. */
+public class AutonomusLeftFieldPosition extends CommandBase {
   private double initPosition;
   private double displacement;
+  // TODO change the degree
+  private int degree = 360/180;
+
+  /** Creates a new AutonomusLeftFieldPosition. */
   DrivetrainSubsystem m_drivetrainSubsystem;
-  public AutonomousLeaveHomeCommand(DrivetrainSubsystem drivetrainSubsystem) {
-    // Use addRequirements() here to declare subsystem dependencies.
+  public AutonomusLeftFieldPosition(DrivetrainSubsystem drivetrainSubsystem) {
     m_drivetrainSubsystem = drivetrainSubsystem;
+    // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_drivetrainSubsystem);
   }
 
@@ -24,12 +25,13 @@ public class AutonomousLeaveHomeCommand extends CommandBase {
   @Override
   public void initialize() {
     initPosition = m_drivetrainSubsystem.getEncoderPosition();
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drivetrainSubsystem.drive(-0.25, -0.25);
+    m_drivetrainSubsystem.drive(0.25, -0.25);
     double currentPose = m_drivetrainSubsystem.getEncoderPosition();
     displacement = currentPose - initPosition;
     displacement = Math.abs(displacement)*((6*Math.PI)/10.71);
@@ -41,18 +43,15 @@ public class AutonomousLeaveHomeCommand extends CommandBase {
   public void end(boolean interrupted) {
     m_drivetrainSubsystem.setDriveTrainToBreakMode();
     m_drivetrainSubsystem.drive(0, 0);
-    System.out.println("ended!!!!!");
+    System.out.println("AutonomusFieldposition: End");
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    // TODO change distance
-    if(displacement >= 60) {
-      System.out.println("returning finished");
+    if(displacement >= (23.6 / degree) * Math.PI){
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 }

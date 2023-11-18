@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandGroupBase;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -49,7 +50,7 @@ public class RobotContainer {
   public final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSubsystem);
   public final ElevatorCommand m_elevatorCommand = new ElevatorCommand(m_elevatorSubsystem);
   
-  public final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_drivetrainSubsystem);
+  public final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_drivetrainSubsystem, m_shooterSubsystem);
 
 
   public RobotContainer() {
@@ -73,12 +74,13 @@ public class RobotContainer {
    * @return 
    * @return 
    */
-  public AutonomousCommand getAutonomousCommand() {
+  public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     m_autoChooser = new SendableChooser<>();
     m_autoChooser.addOption("Drive Straight", m_autonomousCommand);
     SmartDashboard.putData("AutoMode", m_autoChooser);
 
+    //return m_autoChooser.getSelected();
     return m_autonomousCommand;
   }
 }

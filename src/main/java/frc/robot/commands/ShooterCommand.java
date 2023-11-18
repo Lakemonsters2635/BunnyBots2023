@@ -41,6 +41,7 @@ public class ShooterCommand extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     m_shooterSubsystem.stopShooter();
+    System.out.println("Shoot!!!!!!!!!");
   }
 
   // Returns true when the command should end.

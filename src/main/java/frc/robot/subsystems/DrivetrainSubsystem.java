@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -29,6 +30,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     m_leftMotor1.setInverted(true);
     m_leftMotor2.setInverted(true);
+    setDriveTrainToCoastMode();
 
   }
 
@@ -39,23 +41,23 @@ public class DrivetrainSubsystem extends SubsystemBase {
     m_rightMotor2.set(rightJoystick * Constants.DEBUG_MAX_SPEED);
   }
 
+  public void setDriveTrainToBreakMode(){
+    m_leftMotor1.setIdleMode(IdleMode.kBrake);
+    m_leftMotor2.setIdleMode(IdleMode.kBrake);
+    m_rightMotor1.setIdleMode(IdleMode.kBrake);
+    m_rightMotor2.setIdleMode(IdleMode.kBrake);
+  }
+
+  public void setDriveTrainToCoastMode(){
+    m_leftMotor1.setIdleMode(IdleMode.kCoast);
+    m_leftMotor2.setIdleMode(IdleMode.kCoast);
+    m_rightMotor1.setIdleMode(IdleMode.kCoast);
+    m_rightMotor2.setIdleMode(IdleMode.kCoast);
+  }
+
   public double getEncoderPosition () {
     return m_leftMotor1.getEncoder().getPosition();
   }
-
-  public void resetDisplacement (){
-    m_navX.resetDisplacement();
-  }
-
-  public float getXDisplacement (){
-    return m_navX.getDisplacementX();
-  }
-  public float getYDisplacement (){
-    return m_navX.getDisplacementY();
-  }
-  public float getZDisplacement (){
-    return m_navX.getDisplacementZ();
-  }  
 
   @Override
   public void periodic() {

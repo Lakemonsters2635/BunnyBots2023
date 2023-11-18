@@ -40,7 +40,7 @@ public final class Constants {
 
   // SHOOTER CONSTANTS
   // TODO: Change these
-  public final static int SHOOTER_RIGHT_MOTOR = 10;
+  public final static int SHOOTER_RIGHT_MOTOR = 12;
   public final static int SHOOTER_LEFT_MOTOR = 11;
 
   public static final int SHOOTER_STOP_SPEED = 0;
