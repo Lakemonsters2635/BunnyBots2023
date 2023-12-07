@@ -4,18 +4,14 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.subsystems.ElevatorSubsystem;
 
 public class ElevatorCommand extends CommandBase {
   private ElevatorSubsystem m_elevatorSubsystem;
-  private Timer timer;
 
   public ElevatorCommand(ElevatorSubsystem elevatorSubsystem) {
     m_elevatorSubsystem = elevatorSubsystem;
-    timer = new Timer();
 
     addRequirements(m_elevatorSubsystem);
   }
@@ -23,8 +19,6 @@ public class ElevatorCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    timer.reset();
-    timer.start();
     m_elevatorSubsystem.runElevator();
   }
 
@@ -41,10 +35,6 @@ public class ElevatorCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(timer.get() >= Constants.ELEVATOR_STOP_TIME){
-      return true;
-    } else {
       return false;
-    }
   }
 }

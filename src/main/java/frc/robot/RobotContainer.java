@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandGroupBase;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.AutonomousCommand;
@@ -60,13 +62,13 @@ public class RobotContainer {
 
   private void configureBindings() {
     // Creating Buttons
-    Trigger shooterButton = new JoystickButton(rightJoystick, Constants.SHOOTER_BUTTON);
+    Trigger shooterElevatorButton = new JoystickButton(rightJoystick, Constants.SHOOTER_BUTTON);
     Trigger elevatorButton = new JoystickButton(leftJoystick, Constants.ELEVATOR_BUTTON);
-    Trigger intakeButton = new JoystickButton(leftJoystick, Constants.INTAKE_BUTTON);
+    Trigger intakeElevatorButton = new JoystickButton(leftJoystick, Constants.INTAKE_BUTTON);
 
-    shooterButton.onTrue(m_shooterCommand);
-    elevatorButton.onTrue(m_elevatorCommand);
-    intakeButton.whileTrue(m_intakeCommand);
+    shooterElevatorButton.onTrue(new SequentialCommandGroup(m_shooterCommand.withTimeout(0.3), m_elevatorCommand.withTimeout(0.3)));
+    elevatorButton.whileTrue(m_elevatorCommand);
+    intakeElevatorButton.whileTrue(new ParallelCommandGroup(m_intakeCommand, m_elevatorCommand));
   }
 
   /**

@@ -57,11 +57,12 @@ public final class Constants {
   public static final int INTAKE_START_SPEED = 1;
 
   // LEFT BUTTON CONSTANTS
-  public static final int ELEVATOR_BUTTON = 4;
   public final static int INTAKE_BUTTON = 1;
 
   // RIGHT BUTTON CONSTANTS
   public final static int SHOOTER_BUTTON = 1;
+  public static final int ELEVATOR_BUTTON = 3;
+
 
   // DEBUG MAX SPEED
   // TODO: Change this to 1.0 for competetion
