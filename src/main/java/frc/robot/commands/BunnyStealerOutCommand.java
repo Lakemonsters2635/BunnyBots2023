@@ -7,17 +7,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.subsystems.BunnyStealerSubsystem;
 
-public class ElevatorCommand extends CommandBase {
-  private ElevatorSubsystem m_elevatorSubsystem;
+public class BunnyStealerOutCommand extends CommandBase {
+  private BunnyStealerSubsystem m_bunnyStealerSubsystem;
   private Timer timer;
 
-  public ElevatorCommand(ElevatorSubsystem elevatorSubsystem) {
-    m_elevatorSubsystem = elevatorSubsystem;
+  public BunnyStealerOutCommand(BunnyStealerSubsystem bunnyStealerSubsystem) {
+    m_bunnyStealerSubsystem = bunnyStealerSubsystem;
     timer = new Timer();
 
-    addRequirements(m_elevatorSubsystem);
+    addRequirements(m_bunnyStealerSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -25,7 +25,7 @@ public class ElevatorCommand extends CommandBase {
   public void initialize() {
     timer.reset();
     timer.start();
-    m_elevatorSubsystem.runElevator();
+    m_bunnyStealerSubsystem.runOutBunnyStealer();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -35,16 +35,17 @@ public class ElevatorCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_elevatorSubsystem.stopElevator();
+    m_bunnyStealerSubsystem.stopBunnyStealer();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(timer.get() >= Constants.ELEVATOR_STOP_TIME){
-      return true;
-    } else {
-      return false;
-    }
+    // if(timer.get() >= Constants.ELEVATOR_STOP_TIME){
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+    return false;
   }
 }

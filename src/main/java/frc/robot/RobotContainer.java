@@ -7,11 +7,12 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.commands.ElevatorCommand;
+import frc.robot.commands.BunnyStealerInCommand;
+import frc.robot.commands.BunnyStealerOutCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
 import frc.robot.subsystems.DrivetrainSubsystem;
-import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.subsystems.BunnyStealerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
@@ -30,12 +31,14 @@ public class RobotContainer {
   public final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   public final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
-  public final ElevatorSubsystem m_elevatorSubsystem = new ElevatorSubsystem();
+  public final BunnyStealerSubsystem m_bunnyStealerSubsystem = new BunnyStealerSubsystem();
 
   // COMMANDS
   private final ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
   public final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSubsystem);
-  public final ElevatorCommand m_elevatorCommand = new ElevatorCommand(m_elevatorSubsystem);
+  public final BunnyStealerInCommand m_bunnyStealerInCommand = new BunnyStealerInCommand(m_bunnyStealerSubsystem);
+  public final BunnyStealerOutCommand m_bunnyStealerOutCommand = new BunnyStealerOutCommand(m_bunnyStealerSubsystem);
+
 
 
   public RobotContainer() {
@@ -46,12 +49,14 @@ public class RobotContainer {
   private void configureBindings() {
     // Creating Buttons
     Trigger shooterButton = new JoystickButton(rightJoystick, Constants.SHOOTER_BUTTON);
-    Trigger elevatorButton = new JoystickButton(leftJoystick, Constants.ELEVATOR_BUTTON);
+    Trigger bunniesInButton = new JoystickButton(leftJoystick, Constants.BUNNY_IN_BUTTON);
+    Trigger bunniesOutButton = new JoystickButton(leftJoystick, Constants.BUNNY_OUT_BUTTON);
     Trigger intakeButton = new JoystickButton(leftJoystick, Constants.INTAKE_BUTTON);
 
     shooterButton.onTrue(m_shooterCommand);
-    elevatorButton.onTrue(m_elevatorCommand);
-    intakeButton.whileTrue(m_intakeCommand);
+    bunniesInButton.onTrue(m_bunnyStealerInCommand);
+    bunniesOutButton.onTrue(m_bunnyStealerOutCommand);
+    intakeButton.onTrue(m_intakeCommand);
   }
 
   /**
