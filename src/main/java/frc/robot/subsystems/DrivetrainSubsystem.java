@@ -4,7 +4,6 @@
 
 package frc.robot.subsystems;
 
-import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -18,16 +17,13 @@ public class DrivetrainSubsystem extends SubsystemBase {
   public CANSparkMax m_leftMotor2;
   public CANSparkMax m_rightMotor1;
   public CANSparkMax m_rightMotor2;
-  public AHRS m_navX;
 
-  public DrivetrainSubsystem(AHRS navX) {
+  public DrivetrainSubsystem() {
     m_leftMotor1 = new CANSparkMax(Constants.LEFT_DRIVE_MOTOR1, MotorType.kBrushless);
     m_leftMotor2 = new CANSparkMax(Constants.LEFT_DRIVE_MOTOR2, MotorType.kBrushless);
     m_rightMotor1 = new CANSparkMax(Constants.RIGHT_DRIVE_MOTOR1, MotorType.kBrushless);
     m_rightMotor2 = new CANSparkMax(Constants.RIGHT_DRIVE_MOTOR2, MotorType.kBrushless);
     
-    m_navX = navX;
-
     m_leftMotor1.setInverted(true);
     m_leftMotor2.setInverted(true);
     setDriveTrainToCoastMode();

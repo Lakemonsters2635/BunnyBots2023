@@ -46,7 +46,8 @@ public final class Constants {
   public static final int SHOOTER_STOP_SPEED = 0;
   public static final int SHOOTER_START_SPEED = 1;
 
-  public static final int SHOOTER_STOP_TIME = 5;
+  // TODO: Change these
+  public static final int SHOOTER_STOP_TIME = 2;
 
 
   // INTAKE CONSTANTS

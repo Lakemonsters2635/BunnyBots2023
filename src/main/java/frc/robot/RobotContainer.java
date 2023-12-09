@@ -4,10 +4,7 @@
 
 package frc.robot;
 
-import com.kauailabs.navx.frc.AHRS;
-
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -16,7 +13,9 @@ import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.commands.AutonomousCommand;
+import frc.robot.commands.LeftSideAutonomousCommand;
+import frc.robot.commands.RightSideAutonomusCommand;
+import frc.robot.commands.MiddleAutonomusCommand;
 import frc.robot.commands.ElevatorCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
@@ -32,28 +31,26 @@ import frc.robot.subsystems.ShooterSubsystem;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
-
-  public final AHRS navX = new AHRS(SPI.Port.kMXP);
   // JOYSTICKS
   public final Joystick rightJoystick = new Joystick(Constants.RIGHT_JOYSTICK_CHANNEL);
   public final Joystick leftJoystick = new Joystick(Constants.LEFT_JOYSTICK_CHANNEL);
 
   // SUBSYSTEMS
-  public final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem(navX);
+  public final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   public final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   public final ElevatorSubsystem m_elevatorSubsystem = new ElevatorSubsystem();
 
   private SendableChooser<CommandGroupBase> m_autoChooser;
 
-
   // COMMANDS
   private final ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
   public final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSubsystem);
   public final ElevatorCommand m_elevatorCommand = new ElevatorCommand(m_elevatorSubsystem);
   
-  public final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_drivetrainSubsystem, m_shooterSubsystem);
-
+  public final LeftSideAutonomousCommand m_LeftSideAutonomousCommand = new LeftSideAutonomousCommand(m_drivetrainSubsystem, m_shooterSubsystem, m_elevatorSubsystem);
+  public final RightSideAutonomusCommand m_rightSideAutonomousCommand = new RightSideAutonomusCommand(m_drivetrainSubsystem, m_shooterSubsystem, m_elevatorSubsystem);
+  public final MiddleAutonomusCommand m_middleSideAutonomousCommand = new MiddleAutonomusCommand(m_drivetrainSubsystem, m_shooterSubsystem, m_elevatorSubsystem);
 
   public RobotContainer() {
     // Configure the trigger bindings
@@ -65,7 +62,7 @@ public class RobotContainer {
     Trigger shooterElevatorButton = new JoystickButton(rightJoystick, Constants.SHOOTER_BUTTON);
     Trigger elevatorButton = new JoystickButton(leftJoystick, Constants.ELEVATOR_BUTTON);
     Trigger intakeElevatorButton = new JoystickButton(leftJoystick, Constants.INTAKE_BUTTON);
-
+    
     shooterElevatorButton.onTrue(new SequentialCommandGroup(m_shooterCommand.withTimeout(0.3), m_elevatorCommand.withTimeout(0.3)));
     elevatorButton.whileTrue(m_elevatorCommand);
     intakeElevatorButton.whileTrue(new ParallelCommandGroup(m_intakeCommand, m_elevatorCommand));
@@ -76,13 +73,16 @@ public class RobotContainer {
    * @return 
    * @return 
    */
-  public Command getAutonomousCommand() {
+  public Command getLeftSideAutonomousCommand() {
     // An example command will be run in autonomous
     m_autoChooser = new SendableChooser<>();
-    m_autoChooser.addOption("Drive Straight", m_autonomousCommand);
+    m_autoChooser.setDefaultOption("Left Side Autonomous", m_LeftSideAutonomousCommand);
+    m_autoChooser.addOption("Right Side Autonomous", m_rightSideAutonomousCommand);
+    m_autoChooser.addOption("Middle Autonomous", m_middleSideAutonomousCommand);
+
     SmartDashboard.putData("AutoMode", m_autoChooser);
 
-    //return m_autoChooser.getSelected();
-    return m_autonomousCommand;
+    return m_autoChooser.getSelected();
+    //return m_LeftSideAutonomousCommand;
   }
 }

@@ -7,15 +7,15 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
-public class AutonomusCenterFieldPosition extends CommandBase {
+public class AutonomusTurnRightCommand extends CommandBase {
   private double initPosition;
   private double displacement;
   // TODO change the degree
-  private int degree = 360/180;
+  private double degree = 180/360;
 
-  /** Creates a new AutonomusLeftFieldPosition. */
+  /** Creates a new AutonomusTurnRightCommand. */
   DrivetrainSubsystem m_drivetrainSubsystem;
-  public AutonomusCenterFieldPosition(DrivetrainSubsystem drivetrainSubsystem) {
+  public AutonomusTurnRightCommand(DrivetrainSubsystem drivetrainSubsystem) {
     m_drivetrainSubsystem = drivetrainSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_drivetrainSubsystem);
@@ -29,11 +29,9 @@ public class AutonomusCenterFieldPosition extends CommandBase {
   }
 
   // Called every time the scheduler runs while the command is scheduled.
-  //TODO: possibly change sign/direction for joystick values above
-
   @Override
   public void execute() {
-    m_drivetrainSubsystem.drive(0.25, 0.25); 
+    m_drivetrainSubsystem.drive(0.25, -0.25);
     double currentPose = m_drivetrainSubsystem.getEncoderPosition();
     displacement = currentPose - initPosition;
     displacement = Math.abs(displacement)*((6*Math.PI)/10.71);
@@ -51,7 +49,7 @@ public class AutonomusCenterFieldPosition extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(displacement >= (23.6 / degree) * Math.PI){
+    if(displacement >= (23.6 * degree) * Math.PI){
       return true;
     }
     return false;
