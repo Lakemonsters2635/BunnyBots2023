@@ -59,7 +59,7 @@ public final class Constants {
 
   // LEFT JOYSTICK BUTTON CONSTANTS
   public static final int BUNNY_IN_BUTTON = 4;
-  public final static int INTAKE_BUTTON = 1;
+  public final static int INDEX_BUTTON = 1;
   public final static int BUNNY_OUT_BUTTON = 6;
 
   // RIGHT JOYSTICK BUTTON CONSTANTS

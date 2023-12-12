@@ -11,11 +11,9 @@ import frc.robot.subsystems.BunnyStealerSubsystem;
 
 public class BunnyStealerInCommand extends CommandBase {
   private BunnyStealerSubsystem m_bunnyStealerSubsystem;
-  private Timer timer;
 
   public BunnyStealerInCommand(BunnyStealerSubsystem bunnyStealerSubsystem) {
     m_bunnyStealerSubsystem = bunnyStealerSubsystem;
-    timer = new Timer();
 
     addRequirements(m_bunnyStealerSubsystem);
   }
@@ -23,8 +21,6 @@ public class BunnyStealerInCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    timer.reset();
-    timer.start();
     m_bunnyStealerSubsystem.runBunnyStealer();
   }
 
@@ -41,11 +37,6 @@ public class BunnyStealerInCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    // if(timer.get() >= Constants.ELEVATOR_STOP_TIME){
-    //   return true;
-    // } else {
-    //   return false;
-    // }
     return false;
   }
 }

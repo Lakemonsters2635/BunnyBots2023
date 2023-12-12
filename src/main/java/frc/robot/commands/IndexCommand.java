@@ -7,18 +7,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.IndexSubsystem;
 
-public class IntakeCommand extends CommandBase {
-  private IntakeSubsystem m_intakeSubsystem;
+public class IndexCommand extends CommandBase {
+  private IndexSubsystem m_indexSubsystem;
   private Timer timer;
 
-  /** Creates a new IntakeCommand. */
-  public IntakeCommand(IntakeSubsystem intakeSubsystem) {
-    m_intakeSubsystem = intakeSubsystem;
+  /** Creates a new IndexCommand. */
+  public IndexCommand(IndexSubsystem indexSubsystem) {
+    m_indexSubsystem = indexSubsystem;
     timer = new Timer();
 
-    addRequirements(m_intakeSubsystem);
+    addRequirements(m_indexSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -27,7 +27,7 @@ public class IntakeCommand extends CommandBase {
     timer.reset();
     timer.start();
 
-    m_intakeSubsystem.runIntake();
+    m_indexSubsystem.runIntake();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -37,7 +37,7 @@ public class IntakeCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_intakeSubsystem.stopIntake();
+    m_indexSubsystem.stopIntake();
   }
 
   // Returns true when the command should end.
