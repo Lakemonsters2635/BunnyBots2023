@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.BunnyStealerInCommand;
@@ -48,15 +49,13 @@ public class RobotContainer {
 
   private void configureBindings() {
     // Creating Buttons
-    Trigger shooterButton = new JoystickButton(rightJoystick, Constants.SHOOTER_BUTTON);
+    Trigger shooterButton = new JoystickButton(rightJoystick, Constants.SHOOTER_AND_INDEX_BUTTON);
     Trigger bunniesInButton = new JoystickButton(leftJoystick, Constants.BUNNY_IN_BUTTON);
     Trigger bunniesOutButton = new JoystickButton(leftJoystick, Constants.BUNNY_OUT_BUTTON);
-    Trigger intakeButton = new JoystickButton(leftJoystick, Constants.INDEX_BUTTON);
 
-    shooterButton.onTrue(m_shooterCommand);
+    shooterButton.onTrue(new SequentialCommandGroup(m_shooterCommand.withTimeout(1), m_indexCommand));
     bunniesInButton.whileTrue(m_bunnyStealerInCommand);
     bunniesOutButton.whileTrue(m_bunnyStealerOutCommand);
-    intakeButton.onTrue(m_indexCommand);
   }
 
   /**

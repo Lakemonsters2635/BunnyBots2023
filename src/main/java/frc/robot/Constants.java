@@ -29,18 +29,14 @@ public final class Constants {
 
   //ELEVATOR CONSTANTS
   // TODO: Change these
-  public static final int BUNNY_MOTOR = 5;
+  public static final int BUNNY_MOTOR = 4;
 
-  public static final int ELEVATOR_STOP_SPEED = 0;
-  public static final int ELEVATOR_START_SPEED = 1;
-  
-  public static final int ELEVATOR_STOP_TIME = 5;
-
+  public static final int BUNNY_MOTOR_STOP_SPEED = 0;
+  public static final int BUNNY_MOTOR_START_SPEED = 1;
 
   // SHOOTER CONSTANTS
   // TODO: Change these
-  public final static int SHOOTER_RIGHT_MOTOR = 5;
-  //public final static int SHOOTER_LEFT_MOTOR = 9;
+  public final static int SHOOTER_RIGHT_MOTOR = 3;
 
   public static final int SHOOTER_STOP_SPEED = 0;
   public static final int SHOOTER_START_SPEED = 1;
@@ -50,20 +46,17 @@ public final class Constants {
 
   // INTAKE CONSTANTS
   // TODO: Change these
-  public final static int INTAKE_MOTOR = 6;
+  public final static int INDEX_MOTOR = 6;
 
-  public static final int INTAKE_STOP_SPEED = 0;
-  public static final int INTAKE_START_SPEED = 1;
-
-  public static final int INTAKE_STOP_TIME = 5;
+  public static final int INDEX_STOP_SPEED = 0;
+  public static final int INDEX_START_SPEED = 1;
 
   // LEFT JOYSTICK BUTTON CONSTANTS
   public static final int BUNNY_IN_BUTTON = 4;
-  public final static int INDEX_BUTTON = 1;
   public final static int BUNNY_OUT_BUTTON = 6;
 
   // RIGHT JOYSTICK BUTTON CONSTANTS
-  public final static int SHOOTER_BUTTON = 1;
+  public final static int SHOOTER_AND_INDEX_BUTTON = 1;
 
 
 }

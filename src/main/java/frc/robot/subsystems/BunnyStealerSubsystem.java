@@ -18,15 +18,15 @@ public class BunnyStealerSubsystem extends SubsystemBase {
   }
   
   public void runBunnyStealer(){
-    m_bunnyMotor.set(Constants.ELEVATOR_START_SPEED);
+    m_bunnyMotor.set(Constants.BUNNY_MOTOR_START_SPEED);
   }
 
   public void stopBunnyStealer() {
-    m_bunnyMotor.set(Constants.ELEVATOR_STOP_SPEED);
+    m_bunnyMotor.set(Constants.BUNNY_MOTOR_STOP_SPEED);
   }
 
   public void runOutBunnyStealer(){
-    m_bunnyMotor.set(Constants.ELEVATOR_START_SPEED * -1);
+    m_bunnyMotor.set(Constants.BUNNY_MOTOR_START_SPEED * -1);
   }
 
   @Override

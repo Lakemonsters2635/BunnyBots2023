@@ -12,18 +12,26 @@ import frc.robot.Constants;
 
 public class IndexSubsystem extends SubsystemBase {
   //Creates a new IndexSubsystem. 
-  public CANSparkMax m_intakeMotor;
+  public CANSparkMax m_indexMotor;
   
   public IndexSubsystem() {
-    m_intakeMotor = new CANSparkMax(Constants.INTAKE_MOTOR, MotorType.kBrushless);
+    m_indexMotor = new CANSparkMax(Constants.INDEX_MOTOR, MotorType.kBrushless);
   }
 
-  public void runIntake () {
-    m_intakeMotor.set(Constants.INTAKE_START_SPEED);
+  public void runIndex () {
+    m_indexMotor.set(Constants.INDEX_START_SPEED);
   }
 
-  public void stopIntake() {
-    m_intakeMotor.set(Constants.INTAKE_STOP_SPEED);
+  public double getIndexPos(){
+    return m_indexMotor.getEncoder().getPosition();
+  }
+
+  public void resetIndexPos(){
+    m_indexMotor.getEncoder().setPosition(0);
+  }
+
+  public void stopIndex() {
+    m_indexMotor.set(Constants.INDEX_STOP_SPEED);
   }
   
 
