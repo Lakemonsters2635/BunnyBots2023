@@ -53,7 +53,7 @@ public class RobotContainer {
     Trigger bunniesInButton = new JoystickButton(leftJoystick, Constants.BUNNY_IN_BUTTON);
     Trigger bunniesOutButton = new JoystickButton(leftJoystick, Constants.BUNNY_OUT_BUTTON);
 
-    shooterButton.onTrue(new SequentialCommandGroup(m_shooterCommand.withTimeout(1), m_indexCommand));
+    shooterButton.onTrue(new SequentialCommandGroup(m_shooterCommand, m_indexCommand));
     bunniesInButton.whileTrue(m_bunnyStealerInCommand);
     bunniesOutButton.whileTrue(m_bunnyStealerOutCommand);
   }

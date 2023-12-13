@@ -20,23 +20,23 @@ public final class Constants {
 
   // DRIVE CONSTANTS
   // TODO: Change these
-  public static final int RIGHT_DRIVE_MOTOR1 = 8;
-  public static final int RIGHT_DRIVE_MOTOR2 = 7;
+  public static final int RIGHT_DRIVE_MOTOR1 = 2;
+  public static final int RIGHT_DRIVE_MOTOR2 = 3;
 
-  public static final int LEFT_DRIVE_MOTOR1 = 4;
-  public static final int LEFT_DRIVE_MOTOR2 = 3;
+  public static final int LEFT_DRIVE_MOTOR1 = 5;
+  public static final int LEFT_DRIVE_MOTOR2 = 4;
 
 
   //ELEVATOR CONSTANTS
   // TODO: Change these
-  public static final int BUNNY_MOTOR = 4;
+  public static final int BUNNY_MOTOR = 1;
 
   public static final int BUNNY_MOTOR_STOP_SPEED = 0;
   public static final int BUNNY_MOTOR_START_SPEED = 1;
 
   // SHOOTER CONSTANTS
   // TODO: Change these
-  public final static int SHOOTER_RIGHT_MOTOR = 3;
+  public final static int SHOOTER_RIGHT_MOTOR = 12;
 
   public static final int SHOOTER_STOP_SPEED = 0;
   public static final int SHOOTER_START_SPEED = 1;
@@ -46,7 +46,7 @@ public final class Constants {
 
   // INTAKE CONSTANTS
   // TODO: Change these
-  public final static int INDEX_MOTOR = 6;
+  public final static int INDEX_MOTOR = 8;
 
   public static final int INDEX_STOP_SPEED = 0;
   public static final int INDEX_START_SPEED = 1;

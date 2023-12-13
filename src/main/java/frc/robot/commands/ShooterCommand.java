@@ -35,7 +35,9 @@ public class ShooterCommand extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    System.out.println("ShooterCommand: Working");
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -46,11 +48,12 @@ public class ShooterCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(timer.get() >= Constants.SHOOTER_STOP_TIME){
-      return true;
-    }
-    else {
-      return false;
-    }
+    // if(timer.get() >= Constants.SHOOTER_STOP_TIME){
+    //   return true;
+    // }
+    // else {
+    //   return false;
+    // }
+    return false;
   }
 }
