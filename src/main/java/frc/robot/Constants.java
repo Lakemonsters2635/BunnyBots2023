@@ -36,7 +36,7 @@ public final class Constants {
 
   // SHOOTER CONSTANTS
   // TODO: Change these
-  public final static int SHOOTER_RIGHT_MOTOR = 12;
+  public final static int SHOOTER_RIGHT_MOTOR = 12;               
 
   public static final int SHOOTER_STOP_SPEED = 0;
   public static final int SHOOTER_START_SPEED = 1;
@@ -49,7 +49,7 @@ public final class Constants {
   public final static int INDEX_MOTOR = 8;
 
   public static final int INDEX_STOP_SPEED = 0;
-  public static final int INDEX_START_SPEED = 1;
+  public static final double INDEX_START_SPEED = 0.2;
 
   // LEFT JOYSTICK BUTTON CONSTANTS
   public static final int BUNNY_IN_BUTTON = 4;
@@ -57,6 +57,6 @@ public final class Constants {
 
   // RIGHT JOYSTICK BUTTON CONSTANTS
   public final static int SHOOTER_AND_INDEX_BUTTON = 1;
-
+  public final static int INDEX_BUTTON = 3;
 
 }

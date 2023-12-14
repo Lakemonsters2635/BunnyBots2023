@@ -9,6 +9,7 @@ import frc.robot.subsystems.IndexSubsystem;
 
 public class IndexCommand extends CommandBase {
   private IndexSubsystem m_indexSubsystem;
+  private double revolution;
 
   /** Creates a new IndexCommand. */
   public IndexCommand(IndexSubsystem indexSubsystem) {
@@ -20,7 +21,6 @@ public class IndexCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_indexSubsystem.resetIndexPos();
     m_indexSubsystem.runIndex();
   }
 
@@ -28,6 +28,8 @@ public class IndexCommand extends CommandBase {
   @Override
   public void execute() {
     System.out.println("IndexCommand: Working");
+    revolution= m_indexSubsystem.getIndexPos()%4200;
+    //m_indexSubsystem.runIndex();
   }
 
   // Called once the command ends or is interrupted.
@@ -39,7 +41,7 @@ public class IndexCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(m_indexSubsystem.getIndexPos() >= (double)1/3){
+    if(revolution == 1400 || 2800 == revolution|| revolution == 4199){
       return true;
     }
     else {

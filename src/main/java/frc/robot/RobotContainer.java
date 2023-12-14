@@ -50,10 +50,13 @@ public class RobotContainer {
   private void configureBindings() {
     // Creating Buttons
     Trigger shooterButton = new JoystickButton(rightJoystick, Constants.SHOOTER_AND_INDEX_BUTTON);
+    Trigger indexButton = new JoystickButton(rightJoystick,Constants.INDEX_BUTTON);
     Trigger bunniesInButton = new JoystickButton(leftJoystick, Constants.BUNNY_IN_BUTTON);
     Trigger bunniesOutButton = new JoystickButton(leftJoystick, Constants.BUNNY_OUT_BUTTON);
 
-    shooterButton.onTrue(new SequentialCommandGroup(m_shooterCommand, m_indexCommand));
+    //shooterButton.onTrue(new SequentialCommandGroup(m_shooterCommand, m_indexCommand));
+    shooterButton.whileTrue(m_shooterCommand);
+    indexButton.onTrue(m_indexCommand);
     bunniesInButton.whileTrue(m_bunnyStealerInCommand);
     bunniesOutButton.whileTrue(m_bunnyStealerOutCommand);
   }
