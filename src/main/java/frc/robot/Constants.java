@@ -41,7 +41,7 @@ public final class Constants {
   public static final int SHOOTER_STOP_SPEED = 0;
   public static final int SHOOTER_START_SPEED = 1;
 
-  public static final int SHOOTER_STOP_TIME = 5;
+  public static final double SHOOTER_STOP_TIME = 0.1;
 
 
   // INTAKE CONSTANTS
@@ -49,7 +49,7 @@ public final class Constants {
   public final static int INDEX_MOTOR = 8;
 
   public static final int INDEX_STOP_SPEED = 0;
-  public static final double INDEX_START_SPEED = 0.2;
+  public static final double INDEX_START_SPEED = 0.7;
 
   // LEFT JOYSTICK BUTTON CONSTANTS
   public static final int BUNNY_IN_BUTTON = 4;

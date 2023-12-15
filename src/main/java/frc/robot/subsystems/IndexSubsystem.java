@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -17,6 +18,10 @@ public class IndexSubsystem extends SubsystemBase {
   public IndexSubsystem() {
     m_indexMotor = new CANSparkMax(Constants.INDEX_MOTOR, MotorType.kBrushless);
     m_indexMotor.setInverted(true);
+    //System.out.println("IndexSubsystem Constructor");
+    m_indexMotor.setIdleMode(IdleMode.kBrake);
+    // m_indexMotor.setIdleMode(IdleMode.kCoast);
+    resetIndexPos();
   }
 
   public void runIndex () {
@@ -24,6 +29,7 @@ public class IndexSubsystem extends SubsystemBase {
   }
 
   public double getIndexPos(){
+    //System.out.println(m_indexMotor.getEncoder().getPosition());
     return m_indexMotor.getEncoder().getPosition();
   }
 

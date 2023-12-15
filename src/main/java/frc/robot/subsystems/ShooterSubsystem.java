@@ -9,7 +9,6 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.commands.ShooterCommand;
 
 public class ShooterSubsystem extends SubsystemBase {
   /** Creates a new shooterSubsystem. */
@@ -38,6 +37,6 @@ public class ShooterSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    // runShooter();
+    runShooter();
   }
 }
