@@ -4,16 +4,23 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.subsystems.DrivetrainSubsystem;
+import frc.robot.subsystems.IndexSubsystem;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class AutoLeftCommand extends SequentialCommandGroup {
   
-  public AutoLeftCommand(DrivetrainSubsystem drivetrainSubsystem) {
+  public AutoLeftCommand(DrivetrainSubsystem drivetrainSubsystem, IndexSubsystem m_iS) {
     
-    addCommands(new LeaveHomeCommand(drivetrainSubsystem));
+    addCommands(
+      new WaitCommand(0.5),
+      new LeaveHomeCommand(drivetrainSubsystem),
+      new IndexCommand(m_iS),
+      new ParallelCommandGroup(new WaitCommand(1)));
   }
 }

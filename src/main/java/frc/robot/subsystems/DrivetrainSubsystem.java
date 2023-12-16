@@ -19,9 +19,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
   public CANSparkMax m_leftMotor2;
   public CANSparkMax m_rightMotor1;
   public CANSparkMax m_rightMotor2;
-  public DifferentialDrive m_drive;
+
   public MotorControllerGroup right;
   public MotorControllerGroup left;
+
+  public DifferentialDrive m_drive;
 
   public DrivetrainSubsystem() {
     m_leftMotor1 = new CANSparkMax(Constants.LEFT_DRIVE_MOTOR1, MotorType.kBrushless);
@@ -29,13 +31,18 @@ public class DrivetrainSubsystem extends SubsystemBase {
     m_rightMotor1 = new CANSparkMax(Constants.RIGHT_DRIVE_MOTOR1, MotorType.kBrushless);
     m_rightMotor2 = new CANSparkMax(Constants.RIGHT_DRIVE_MOTOR2, MotorType.kBrushless);
 
+    m_leftMotor2.follow(m_leftMotor1);
+    m_rightMotor2.follow(m_rightMotor1);
 
     m_leftMotor1.setInverted(true);
     m_leftMotor2.setInverted(true);
+
     right = new MotorControllerGroup(m_rightMotor1, m_rightMotor2);
     left = new MotorControllerGroup(m_leftMotor1, m_leftMotor2);
+
     m_drive = new DifferentialDrive(left, right);
     m_drive.setDeadband(0.05);
+    m_drive.setExpiration(0.1);
 
   }
 
@@ -48,7 +55,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
   }
 
   public void runDrivetrain(){
-    drive(-0.6, -0.6);
+    m_leftMotor1.set(-0.6);
+    m_rightMotor1.set(-0.6);
   }
 
   public void stopDrivetrain(){
@@ -57,12 +65,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
     m_leftMotor1.setIdleMode(IdleMode.kBrake);
     m_leftMotor2.setIdleMode(IdleMode.kBrake);
 
-    drive(0, 0);
-
-    // m_rightMotor1.setIdleMode(IdleMode.kCoast);
-    // m_rightMotor2.setIdleMode(IdleMode.kCoast);
-    // m_leftMotor1.setIdleMode(IdleMode.kCoast);
-    // m_leftMotor2.setIdleMode(IdleMode.kCoast);
+    m_leftMotor1.set(0);
+    m_rightMotor1.set(0);
   }
 
   
