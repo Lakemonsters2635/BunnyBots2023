@@ -14,12 +14,11 @@ package frc.robot;
  */
 public final class Constants {
   // JOYSTICKS
-  public static final int RIGHT_JOYSTICK_CHANNEL = 1;
-  public static final int LEFT_JOYSTICK_CHANNEL = 0;
+  public static final int RIGHT_JOYSTICK_CHANNEL = 0;
+  public static final int LEFT_JOYSTICK_CHANNEL = 1;
 
 
   // DRIVE CONSTANTS
-  // TODO: Change these
   public static final int RIGHT_DRIVE_MOTOR1 = 2;
   public static final int RIGHT_DRIVE_MOTOR2 = 3;
 
@@ -27,15 +26,13 @@ public final class Constants {
   public static final int LEFT_DRIVE_MOTOR2 = 4;
 
 
-  //ELEVATOR CONSTANTS
-  // TODO: Change these
+  // BUNNY MOTOR CONSTANTS
   public static final int BUNNY_MOTOR = 1;
 
   public static final int BUNNY_MOTOR_STOP_SPEED = 0;
-  public static final int BUNNY_MOTOR_START_SPEED = 1;
+  public static final double BUNNY_MOTOR_START_SPEED = 0.4;
 
   // SHOOTER CONSTANTS
-  // TODO: Change these
   public final static int SHOOTER_RIGHT_MOTOR = 12;               
 
   public static final int SHOOTER_STOP_SPEED = 0;
@@ -44,19 +41,18 @@ public final class Constants {
   public static final double SHOOTER_STOP_TIME = 0.1;
 
 
-  // INTAKE CONSTANTS
-  // TODO: Change these
+  // INDEXER CONSTANTS
   public final static int INDEX_MOTOR = 8;
 
   public static final int INDEX_STOP_SPEED = 0;
   public static final double INDEX_START_SPEED = 0.7;
 
   // LEFT JOYSTICK BUTTON CONSTANTS
-  public static final int BUNNY_IN_BUTTON = 4;
-  public final static int BUNNY_OUT_BUTTON = 6;
+  public static final int BUNNY_IN_BUTTON =4;
 
   // RIGHT JOYSTICK BUTTON CONSTANTS
-  public final static int SHOOTER_AND_INDEX_BUTTON = 1;
-  public final static int INDEX_BUTTON = 3;
+  public final static int INDEX_BUTTON = 1;
+  public final static int BUNNY_OUT_BUTTON = 3;
+
 
 }

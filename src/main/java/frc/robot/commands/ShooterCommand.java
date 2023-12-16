@@ -6,7 +6,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class ShooterCommand extends CommandBase {
@@ -36,7 +35,6 @@ public class ShooterCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // System.out.println("ShooterCommand: Working");
   }
 
   // Called once the command ends or is interrupted.
@@ -48,12 +46,6 @@ public class ShooterCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    // if(timer.get() >= Constants.SHOOTER_STOP_TIME){
-    //   return true;
-    // }
-    // else {
-    //   return false;
-    // }
     return false;
   }
 }

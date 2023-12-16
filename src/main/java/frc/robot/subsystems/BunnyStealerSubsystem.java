@@ -15,6 +15,7 @@ public class BunnyStealerSubsystem extends SubsystemBase {
 
   public BunnyStealerSubsystem() {
     m_bunnyMotor = new CANSparkMax(Constants.BUNNY_MOTOR, MotorType.kBrushless);
+    m_bunnyMotor.setInverted(true);
   }
   
   public void runBunnyStealer(){

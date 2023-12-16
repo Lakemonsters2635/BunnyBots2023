@@ -22,9 +22,7 @@ public class IndexCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    //System.out.println("Index.initialize()");
     m_indexSubsystem.runIndex();
-    System.out.println("IndexCommand.initialize: working");
     revolution= m_indexSubsystem.getIndexPos()%100;
     if(revolution<33){
       setPoint = 33;
@@ -41,19 +39,13 @@ public class IndexCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //System.out.println("IndexCommand: Working");
     revolution= m_indexSubsystem.getIndexPos();
-    System.out.println("Encoder Counts Modded: "+ revolution);
-    //System.out.println("Encoder Counts"+ m_indexSubsystem.getIndexPos());
-
-    //m_indexSubsystem.runIndex();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     m_indexSubsystem.stopIndex();
-    System.out.println("IndexCommand.end: Running");
   }
 
   // Returns true when the command should end.
@@ -61,8 +53,6 @@ public class IndexCommand extends CommandBase {
   public boolean isFinished() {
 
     if(revolution>setPoint){
-      System.out.println("Revolution:"+ revolution);
-      System.out.println("SetPoint:" + setPoint);
       return true;
     }
     else {
