@@ -5,8 +5,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandGroupBase;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.AutoLeftCommand;
 import frc.robot.commands.BunnyStealerInCommand;
 import frc.robot.commands.BunnyStealerOutCommand;
 import frc.robot.commands.IndexCommand;
@@ -37,6 +42,11 @@ public class RobotContainer {
   public final BunnyStealerInCommand m_bunnyStealerInCommand = new BunnyStealerInCommand(m_bunnyStealerSubsystem);
   public final BunnyStealerOutCommand m_bunnyStealerOutCommand = new BunnyStealerOutCommand(m_bunnyStealerSubsystem);
 
+  // AUTONOMUS COMMANDS
+  public final AutoLeftCommand m_autoLeftCommand = new AutoLeftCommand(m_drivetrainSubsystem);
+
+  private SendableChooser<CommandGroupBase> m_autoChooser;
+
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
@@ -57,7 +67,12 @@ public class RobotContainer {
    * Use this to pass the autonomous command to the main {@link Robot} class.
    * @return 
    */
-  public void getAutonomousCommand() {
+  public Command getAutonomousCommand() {
     // An example command will be run in autonomous
+    m_autoChooser = new SendableChooser<>();
+    m_autoChooser.addOption("Left", m_autoLeftCommand);
+    
+    SmartDashboard.putData("AutoMode",m_autoChooser);
+    return m_autoLeftCommand;
   }
 }
