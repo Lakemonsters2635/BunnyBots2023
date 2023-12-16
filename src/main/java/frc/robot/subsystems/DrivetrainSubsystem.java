@@ -46,7 +46,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
   }
 
-  public void drive (double rightJoystick, double leftJoystick) {
+  public void drive(double rightJoystick, double leftJoystick) {
     m_drive.tankDrive(leftJoystick, rightJoystick);
   }
 
