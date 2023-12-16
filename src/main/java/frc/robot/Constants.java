@@ -45,7 +45,7 @@ public final class Constants {
   public final static int INDEX_MOTOR = 8;
 
   public static final int INDEX_STOP_SPEED = 0;
-  public static final double INDEX_START_SPEED = 0.7;
+  public static final double INDEX_START_SPEED = 0.5;
 
   // LEFT JOYSTICK BUTTON CONSTANTS
   public static final int BUNNY_IN_BUTTON =4;

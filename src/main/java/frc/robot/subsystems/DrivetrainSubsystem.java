@@ -33,8 +33,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
   }
 
   public void drive(double rightJoystick, double leftJoystick) {
-    m_leftMotor1.set(Math.pow(leftJoystick, 3));
-    m_rightMotor1.set(Math.pow(rightJoystick, 3));
+    m_leftMotor1.set(leftJoystick);
+    m_rightMotor1.set(rightJoystick);
   }
 
   public double getEncoderPos(){

@@ -25,7 +25,7 @@ public class LeaveHomeCommand extends CommandBase {
   @Override
   public void initialize() {
     m_drivetrainSubsystem.resetEncoder();
-    goalPose = m_drivetrainSubsystem.getEncoderPos() + 264;
+    goalPose = m_drivetrainSubsystem.getEncoderPos() + 254;
   }
 
   // Called every time the scheduler runs while the command is scheduled.

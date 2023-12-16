@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.AutoLeftCommand;
+import frc.robot.commands.AutoMiddleCommand;
 import frc.robot.commands.AutoRightCommand;
 import frc.robot.commands.BunnyStealerInCommand;
 import frc.robot.commands.BunnyStealerOutCommand;
 import frc.robot.commands.IndexCommand;
-import frc.robot.commands.SpinCommand;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.BunnyStealerSubsystem;
 import frc.robot.subsystems.IndexSubsystem;
@@ -43,6 +43,8 @@ public class RobotContainer {
   // COMMANDS
   public final IndexCommand m_indexCommand = new IndexCommand(m_indexSubsystem);
   public final IndexCommand m_indexCommand2 = new IndexCommand(m_indexSubsystem);
+  public final IndexCommand m_indexCommand3 = new IndexCommand(m_indexSubsystem);
+
 
   public final BunnyStealerInCommand m_bunnyStealerInCommand = new BunnyStealerInCommand(m_bunnyStealerSubsystem);
   public final BunnyStealerOutCommand m_bunnyStealerOutCommand = new BunnyStealerOutCommand(m_bunnyStealerSubsystem);
@@ -50,7 +52,7 @@ public class RobotContainer {
   // AUTONOMUS COMMANDS
   public final AutoLeftCommand m_autoLeftCommand = new AutoLeftCommand(m_drivetrainSubsystem, m_indexSubsystem);
   public final AutoRightCommand m_autoRightCommand = new AutoRightCommand(m_drivetrainSubsystem, m_indexSubsystem);
-  public final SpinCommand m_spinCommand = new SpinCommand(m_drivetrainSubsystem);
+  public final AutoMiddleCommand m_autoMiddleCommand = new AutoMiddleCommand(m_drivetrainSubsystem, m_indexSubsystem);
 
   private SendableChooser<Command> m_autoChooser;
 
@@ -66,7 +68,6 @@ public class RobotContainer {
     Trigger bunniesOutButton = new JoystickButton(rightJoystick, Constants.BUNNY_OUT_BUTTON);
 
     indexButton.onTrue(new SequentialCommandGroup(m_indexCommand,
-                                                  m_indexCommand2,
                                                   new WaitCommand(1)));
     bunniesInButton.whileTrue(m_bunnyStealerInCommand);
     bunniesOutButton.whileTrue(m_bunnyStealerOutCommand);
@@ -81,7 +82,7 @@ public class RobotContainer {
     m_autoChooser = new SendableChooser<>();
     m_autoChooser.addOption("Left", m_autoLeftCommand);
     m_autoChooser.addOption("Right", m_autoRightCommand);
-    m_autoChooser.addOption("Spin", m_spinCommand);
+    m_autoChooser.addOption("Middle", m_autoMiddleCommand);
     
     SmartDashboard.putData("AutoMode",m_autoChooser);
     return m_autoChooser;
