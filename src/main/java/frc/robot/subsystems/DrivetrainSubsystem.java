@@ -8,8 +8,6 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -20,10 +18,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
   public CANSparkMax m_rightMotor1;
   public CANSparkMax m_rightMotor2;
 
-  public MotorControllerGroup right;
-  public MotorControllerGroup left;
-
-  public DifferentialDrive m_drive;
 
   public DrivetrainSubsystem() {
     m_leftMotor1 = new CANSparkMax(Constants.LEFT_DRIVE_MOTOR1, MotorType.kBrushless);
@@ -36,18 +30,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     m_leftMotor1.setInverted(true);
     m_leftMotor2.setInverted(true);
-
-    right = new MotorControllerGroup(m_rightMotor1, m_rightMotor2);
-    left = new MotorControllerGroup(m_leftMotor1, m_leftMotor2);
-
-    m_drive = new DifferentialDrive(left, right);
-    m_drive.setDeadband(0.05);
-    m_drive.setExpiration(0.1);
-
   }
 
   public void drive(double rightJoystick, double leftJoystick) {
-    m_drive.tankDrive(leftJoystick, rightJoystick);
+    m_leftMotor1.set(Math.pow(leftJoystick, 3));
+    m_rightMotor1.set(Math.pow(rightJoystick, 3));
   }
 
   public double getEncoderPos(){
@@ -61,12 +48,14 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
   public void stopDrivetrain(){
     m_rightMotor1.setIdleMode(IdleMode.kBrake);
-    m_rightMotor2.setIdleMode(IdleMode.kBrake);
     m_leftMotor1.setIdleMode(IdleMode.kBrake);
-    m_leftMotor2.setIdleMode(IdleMode.kBrake);
 
     m_leftMotor1.set(0);
     m_rightMotor1.set(0);
+  }
+
+  public void resetEncoder(){
+    m_rightMotor1.getEncoder().setPosition(0);
   }
 
   
